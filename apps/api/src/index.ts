@@ -2,7 +2,7 @@ import { buildServer } from './server.js';
 
 async function main() {
   const port = parseInt(process.env.PORT || '4000', 10);
-  const host = process.env.HOST || '0.0.0.0';
+  const host = process.env.HOST || '127.0.0.1';
 
   const { app } = await buildServer({ logger: true });
 

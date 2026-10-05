@@ -7,6 +7,8 @@ import { join } from 'path';
 import { createCache, Cache } from './cache/index.js';
 import { globalSourceRegistry } from './sources/types.js';
 import { registerHealthRoutes } from './routes/health.js';
+import { registerCityRoutes } from './routes/cities.js';
+import { registerWeatherRoutes } from './routes/weather.js';
 
 export interface ServerOptions {
   cache?: Cache;
@@ -29,7 +31,7 @@ export async function buildServer(options: ServerOptions = {}): Promise<{ app: F
     contentSecurityPolicy: process.env.NODE_ENV === 'production',
   });
 
-  // CORS configuration
+  // CORS configuration (strictly allowed origin from env)
   const allowedOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
   await app.register(cors, {
     origin: allowedOrigin,
@@ -67,7 +69,7 @@ export async function buildServer(options: ServerOptions = {}): Promise<{ app: F
     app.log.error(error);
     const statusCode = error.statusCode || 500;
     const code = error.code || (statusCode === 429 ? 'RATE_LIMITED' : 'INTERNAL_SERVER_ERROR');
-    
+
     reply.status(statusCode).send({
       error: {
         code,
@@ -78,6 +80,8 @@ export async function buildServer(options: ServerOptions = {}): Promise<{ app: F
 
   // Register Routes
   registerHealthRoutes(app, cache);
+  registerCityRoutes(app, cache);
+  registerWeatherRoutes(app, cache);
 
   return { app, cache };
 }
