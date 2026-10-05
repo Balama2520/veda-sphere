@@ -9,13 +9,8 @@ import {
 
 describe('News Source & Parsing Tests', () => {
   beforeEach(() => {
-    vi.useFakeTimers();
     clearNewsCache();
     vi.restoreAllMocks();
-  });
-
-  afterEach(() => {
-    vi.useRealTimers();
   });
 
   it('sanitizes HTML tags, control chars, HTML entities, and caps length at 200', () => {
