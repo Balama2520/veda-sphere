@@ -18,7 +18,6 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 | `indian-express-rss` | [Indian Express RSS](https://indianexpress.com/feed/) | 300s | 300s | Public RSS feed used for headline links only. No article body copying. |
 | `times-of-india-rss` | [Times of India RSS](https://timesofindia.indiatimes.com/rssfeedstopstories.cms) | 300s | 300s | Public RSS feed used for headline links only. No article body copying. |
 | `hindustan-times-rss` | [Hindustan Times India RSS](https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml) | 300s | 300s | Public RSS feed used for headline links only. No article body copying. |
-| `ndtv-rss` | [NDTV Top Stories RSS](https://feeds.feedburner.com/ndtvnews-top-stories) | 300s | 300s | Public RSS feed used for headline links only. No article body copying. |
 | `frankfurter-currency` | [Frankfurter Currency API](https://api.frankfurter.dev/v1/latest) | 3600s | 3600s | Open data published by European Central Bank. Free reference rates for commercial and non-commercial use. |
 | `demo-prices-provider` | [VedaSphere Demo Price Provider](https://vedasphere.local/demo/prices) | 3600s | 3600s | Simulated local retail fuel, gold/silver, and delayed index values for demonstration. |
 
@@ -73,13 +72,6 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Attribution Text**: "Headlines from Hindustan Times"
 - **Terms & Notes**: Public RSS feed used for headline links only. No article body copying.
 
-### NDTV Top Stories RSS (`ndtv-rss`)
-- **URL**: [https://feeds.feedburner.com/ndtvnews-top-stories](https://feeds.feedburner.com/ndtvnews-top-stories)
-- **Refresh Interval**: Every 300 seconds
-- **Cache TTL**: 300 seconds
-- **Attribution Text**: "Headlines from NDTV"
-- **Terms & Notes**: Public RSS feed used for headline links only. No article body copying.
-
 ### Frankfurter Currency API (`frankfurter-currency`)
 - **URL**: [https://api.frankfurter.dev/v1/latest](https://api.frankfurter.dev/v1/latest)
 - **Refresh Interval**: Every 3600 seconds
@@ -95,4 +87,4 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Terms & Notes**: Simulated local retail fuel, gold/silver, and delayed index values for demonstration.
 
 ---
-*Last updated: 2026-10-05T14:30:02.038Z*
+*Last updated: 2026-10-05T14:59:13.131Z*

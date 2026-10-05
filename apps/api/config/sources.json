@@ -64,15 +64,6 @@
       "attribution": "Headlines from Hindustan Times"
     },
     {
-      "id": "ndtv-rss",
-      "name": "NDTV Top Stories RSS",
-      "url": "https://feeds.feedburner.com/ndtvnews-top-stories",
-      "ttlSeconds": 300,
-      "refreshIntervalSeconds": 300,
-      "terms": "Public RSS feed used for headline links only. No article body copying.",
-      "attribution": "Headlines from NDTV"
-    },
-    {
       "id": "frankfurter-currency",
       "name": "Frankfurter Currency API",
       "url": "https://api.frankfurter.dev/v1/latest",

@@ -34,12 +34,6 @@ export const APPROVED_NEWS_FEEDS: NewsSourceConfig[] = [
     url: 'https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml',
     publisher: 'Hindustan Times',
   },
-  {
-    id: 'ndtv-rss',
-    name: 'NDTV Top Stories',
-    url: 'https://feeds.feedburner.com/ndtvnews-top-stories',
-    publisher: 'NDTV',
-  },
 ];
 
 const ALLOWLISTED_HOSTS = new Set([

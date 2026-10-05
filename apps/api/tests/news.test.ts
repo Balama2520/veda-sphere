@@ -93,13 +93,13 @@ describe('News Source & Parsing Tests', () => {
     // Sort newest first: Beta (14:00) should come before Alpha (10:00)
     expect(result.data.items[0].title).toBe('Headline Beta');
     expect(result.data.items[1].title).toBe('Headline Alpha');
-    expect(result.data.unavailableSources?.length).toBe(3); // 3 of 5 feeds failed
+    expect(result.data.unavailableSources?.length).toBe(2); // 2 of 4 feeds failed
   });
 
-  it('handles single feed failure gracefully: 1 feed fails, 4 succeed', async () => {
+  it('handles single feed failure gracefully: 1 feed fails, 3 succeed', async () => {
     vi.spyOn(globalThis, 'fetch').mockImplementation(async (url: any) => {
       const uStr = String(url);
-      if (uStr.includes('feedburner')) {
+      if (uStr.includes('hindustantimes')) {
         return new Response('Internal Server Error', { status: 500 });
       }
       return new Response(
@@ -110,8 +110,8 @@ describe('News Source & Parsing Tests', () => {
 
     const result = await fetchNewsData(10);
     expect(result.status).toBe('fresh');
-    expect(result.data.items.length).toBe(4);
-    expect(result.data.unavailableSources).toEqual(['NDTV']);
+    expect(result.data.items.length).toBe(3);
+    expect(result.data.unavailableSources).toEqual(['Hindustan Times']);
   });
 
   it('cache hit: subsequent requests within TTL return cached data without refetching', async () => {
