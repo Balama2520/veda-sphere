@@ -1,0 +1,30 @@
+{
+  "name": "veda-sphere",
+  "private": true,
+  "version": "0.1.0",
+  "description": "VedaSphere - Trusted daily city brief for Indian families",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "test": "vitest run",
+    "doctor": "tsx scripts/doctor.ts",
+    "generate-docs": "tsx scripts/generate-data-sources.ts",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
