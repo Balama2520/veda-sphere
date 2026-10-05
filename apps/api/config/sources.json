@@ -28,22 +28,58 @@
       "attribution": "Air quality forecast data by Open-Meteo.com (CC BY 4.0) using Copernicus Atmosphere Monitoring Service (CAMS) model by ECMWF. Sub-index AQI calculated via Indian CPCB formula."
     },
     {
-      "id": "indian-news-rss",
-      "name": "Public News RSS Feeds",
-      "url": "https://news.google.com/rss",
+      "id": "the-hindu-rss",
+      "name": "The Hindu National RSS",
+      "url": "https://www.thehindu.com/news/national/feeder/default.rss",
       "ttlSeconds": 300,
       "refreshIntervalSeconds": 300,
-      "terms": "Public RSS feeds stored as headlines and links only. No article body copying.",
-      "attribution": "Headlines sourced from public RSS feeds"
+      "terms": "Public RSS feed used for headline links only. No article body copying.",
+      "attribution": "Headlines from The Hindu"
+    },
+    {
+      "id": "indian-express-rss",
+      "name": "Indian Express RSS",
+      "url": "https://indianexpress.com/feed/",
+      "ttlSeconds": 300,
+      "refreshIntervalSeconds": 300,
+      "terms": "Public RSS feed used for headline links only. No article body copying.",
+      "attribution": "Headlines from The Indian Express"
+    },
+    {
+      "id": "times-of-india-rss",
+      "name": "Times of India RSS",
+      "url": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+      "ttlSeconds": 300,
+      "refreshIntervalSeconds": 300,
+      "terms": "Public RSS feed used for headline links only. No article body copying.",
+      "attribution": "Headlines from The Times of India"
+    },
+    {
+      "id": "hindustan-times-rss",
+      "name": "Hindustan Times India RSS",
+      "url": "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml",
+      "ttlSeconds": 300,
+      "refreshIntervalSeconds": 300,
+      "terms": "Public RSS feed used for headline links only. No article body copying.",
+      "attribution": "Headlines from Hindustan Times"
+    },
+    {
+      "id": "ndtv-rss",
+      "name": "NDTV Top Stories RSS",
+      "url": "https://feeds.feedburner.com/ndtvnews-top-stories",
+      "ttlSeconds": 300,
+      "refreshIntervalSeconds": 300,
+      "terms": "Public RSS feed used for headline links only. No article body copying.",
+      "attribution": "Headlines from NDTV"
     },
     {
       "id": "frankfurter-currency",
       "name": "Frankfurter Currency API",
-      "url": "https://api.frankfurter.app",
+      "url": "https://api.frankfurter.dev/v1/latest",
       "ttlSeconds": 3600,
       "refreshIntervalSeconds": 3600,
-      "terms": "Open data published by European Central Bank. Free reference rates.",
-      "attribution": "Rates provided by Frankfurter / European Central Bank"
+      "terms": "Open data published by European Central Bank. Free reference rates for commercial and non-commercial use.",
+      "attribution": "Reference rates provided by Frankfurter / European Central Bank"
     },
     {
       "id": "demo-prices-provider",
