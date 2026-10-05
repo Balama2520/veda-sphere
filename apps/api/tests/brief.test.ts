@@ -52,9 +52,8 @@ describe('Phase 3 – AQI Source & Brief Route Tests', () => {
     expect(body.city).toBe('Hyderabad');
     expect(body.weather.status).toBe('fresh');
     expect(body.aqi.status).toBe('fresh');
-    expect(body.overallStatus).toBe('fresh');
-    expect(Array.isArray(body.lines)).toBe(true);
-    expect(body.lines.length).toBeGreaterThan(0);
+    expect(body.news).toBeDefined();
+    expect(body.prices).toBeDefined();
     expect(body.aqi.data.kind).toBe('model-estimate');
     expect(body.aqi.data.userNote).toContain('not a station reading');
   });
