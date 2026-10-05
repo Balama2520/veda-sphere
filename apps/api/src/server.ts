@@ -27,7 +27,6 @@ export async function buildServer(options: ServerOptions = {}): Promise<{ app: F
       level: process.env.LOG_LEVEL || 'info',
       redact: ['headers.authorization', 'req.headers.cookie', 'email', 'token'],
     },
-    disableRequestLogging: false,
   });
 
   // Security headers via helmet
