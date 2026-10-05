@@ -29,8 +29,7 @@ interface Breakpoint {
 }
 
 // CPCB Breakpoints for PM2.5 (24-hour concentration in µg/m³)
-// Verified Source: CPCB "National Air Quality Index" Publication (October 2014), Page 12, Table 1
-// Document: Central Pollution Control Board, Ministry of Environment, Forests & Climate Change, Govt of India
+// [UNVERIFIED] Standard CPCB NAQI formula values; official PDF document not opened directly in environment.
 const PM25_BREAKPOINTS: Breakpoint[] = [
   { bpLo: 0, bpHi: 30, iLo: 0, iHi: 50 },
   { bpLo: 31, bpHi: 60, iLo: 51, iHi: 100 },

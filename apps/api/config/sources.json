@@ -24,8 +24,8 @@
       "url": "https://air-quality-api.open-meteo.com/v1/air-quality",
       "ttlSeconds": 1800,
       "refreshIntervalSeconds": 1800,
-      "terms": "Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.",
-      "attribution": "Air quality forecast data by Open-Meteo.com (CC BY 4.0) using Copernicus Atmosphere Monitoring Service (CAMS) model by ECMWF. Sub-index AQI calculated via Indian CPCB formula."
+      "terms": "Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using unverified CPCB National AQI sub-index formula applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.",
+      "attribution": "Air quality forecast data by Open-Meteo.com (CC BY 4.0) using Copernicus Atmosphere Monitoring Service (CAMS) model by ECMWF. Sub-index AQI calculated via unverified CPCB formula."
     },
     {
       "id": "the-hindu-rss",

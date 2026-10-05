@@ -13,7 +13,7 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 | --- | --- | --- | --- | --- |
 | `open-meteo-weather` | [Open-Meteo Weather API](https://api.open-meteo.com/v1/forecast) | 900s | 900s | Non-commercial open database license. Attribution required for public use. |
 | `open-meteo-geocoding` | [Open-Meteo Geocoding API](https://geocoding-api.open-meteo.com/v1/search) | 86400s | 86400s | Non-commercial open database license. Free geocoding search for city locations. |
-| `open-meteo-aqi` | [Open-Meteo Air Quality API (CAMS model)](https://air-quality-api.open-meteo.com/v1/air-quality) | 1800s | 1800s | Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var. |
+| `open-meteo-aqi` | [Open-Meteo Air Quality API (CAMS model)](https://air-quality-api.open-meteo.com/v1/air-quality) | 1800s | 1800s | Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using unverified CPCB National AQI sub-index formula applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var. |
 | `the-hindu-rss` | [The Hindu National RSS](https://www.thehindu.com/news/national/feeder/default.rss) | 300s | 300s | Public RSS feed used for headline links only. No article body copying. |
 | `indian-express-rss` | [Indian Express RSS](https://indianexpress.com/feed/) | 300s | 300s | Public RSS feed used for headline links only. No article body copying. |
 | `times-of-india-rss` | [Times of India RSS](https://timesofindia.indiatimes.com/rssfeedstopstories.cms) | 300s | 300s | Public RSS feed used for headline links only. No article body copying. |
@@ -42,8 +42,8 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **URL**: [https://air-quality-api.open-meteo.com/v1/air-quality](https://air-quality-api.open-meteo.com/v1/air-quality)
 - **Refresh Interval**: Every 1800 seconds
 - **Cache TTL**: 1800 seconds
-- **Attribution Text**: "Air quality forecast data by Open-Meteo.com (CC BY 4.0) using Copernicus Atmosphere Monitoring Service (CAMS) model by ECMWF. Sub-index AQI calculated via Indian CPCB formula."
-- **Terms & Notes**: Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.
+- **Attribution Text**: "Air quality forecast data by Open-Meteo.com (CC BY 4.0) using Copernicus Atmosphere Monitoring Service (CAMS) model by ECMWF. Sub-index AQI calculated via unverified CPCB formula."
+- **Terms & Notes**: Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using unverified CPCB National AQI sub-index formula applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.
 
 ### The Hindu National RSS (`the-hindu-rss`)
 - **URL**: [https://www.thehindu.com/news/national/feeder/default.rss](https://www.thehindu.com/news/national/feeder/default.rss)
@@ -95,4 +95,4 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Terms & Notes**: Simulated local retail fuel, gold/silver, and delayed index values for demonstration.
 
 ---
-*Last updated: 2026-10-05T14:00:46.094Z*
+*Last updated: 2026-10-05T14:30:02.038Z*
