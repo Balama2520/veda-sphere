@@ -15,6 +15,23 @@ export interface NormalizedResult<T = unknown> {
   status: DataStatus;
 }
 
+export interface CityItem {
+  name: string;
+  state?: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface WeatherData {
+  city: string;
+  temperatureC: number;
+  humidity: number;
+  rainChancePercent: number;
+  todayMaxC: number;
+  conditionLabel: string;
+  advice: string;
+}
+
 export interface CacheStats {
   size: number;
   maxSize: number;
