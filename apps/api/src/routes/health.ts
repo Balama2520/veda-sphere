@@ -11,7 +11,6 @@ export function registerHealthRoutes(app: FastifyInstance, cache: Cache): void {
     // Check if any sources are in error state to set global status
     const sourceStatuses = Object.values(sourceHealth);
     const hasError = sourceStatuses.some((s) => s.status === 'error');
-    const hasUnknown = sourceStatuses.some((s) => s.status === 'unknown');
 
     let status: 'ok' | 'degraded' | 'error' = 'ok';
     if (hasError) {

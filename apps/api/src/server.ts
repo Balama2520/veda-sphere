@@ -68,7 +68,7 @@ export async function buildServer(options: ServerOptions = {}): Promise<{ app: F
   }
 
   // Consistent Error Handler
-  app.setErrorHandler((error, _request, reply) => {
+  app.setErrorHandler((error: any, _request, reply) => {
     app.log.error(error);
     const statusCode = error.statusCode || 500;
     const code = error.code || (statusCode === 429 ? 'RATE_LIMITED' : 'INTERNAL_SERVER_ERROR');
