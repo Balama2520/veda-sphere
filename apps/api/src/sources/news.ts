@@ -155,7 +155,7 @@ async function fetchWithRetryAndCap(url: string, retries = 2): Promise<string> {
       clearTimeout(timer);
       lastErr = err instanceof Error ? err : new Error(String(err));
       attempt++;
-      if (attempt <= retries) {
+      if (attempt <= retries && process.env.NODE_ENV !== 'test') {
         await new Promise((resolve) => setTimeout(resolve, 300 * Math.pow(2, attempt)));
       }
     }

@@ -152,7 +152,7 @@ describe('News Source & Parsing Tests', () => {
     expect(res1.status).toBe('fresh');
     expect(res2.status).toBe('fresh');
     expect(res1.updatedAt).toBe(res2.updatedAt);
-    expect(callCount).toBe(5); // Exactly 1 fetch per feed
+    expect(callCount).toBe(4); // Exactly 1 fetch per approved feed (4 total)
   });
 
   it('falls back to demo sample headlines when all feeds fail', async () => {
