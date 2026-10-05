@@ -40,6 +40,17 @@ export function Footer() {
         </a>{' '}
         National AQI sub-index method. Figures are model estimates — not ground station readings.
       </p>
+      <p className="pt-1">
+        For detailed terms and licensing, see{' '}
+        <a
+          href="https://github.com/Balama2520/veda-sphere/blob/main/DATA_SOURCES.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline font-medium text-brand-indigo hover:opacity-80 transition-opacity"
+        >
+          DATA_SOURCES.md
+        </a>.
+      </p>
       <p className="pt-1 opacity-70">© {new Date().getFullYear()} VedaSphere. For informational purposes only.</p>
     </footer>
   );
