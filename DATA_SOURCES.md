@@ -12,6 +12,7 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 | Source ID | Name | Refresh Interval | TTL (s) | Terms / Licensing |
 | --- | --- | --- | --- | --- |
 | `open-meteo-weather` | [Open-Meteo Weather API](https://api.open-meteo.com/v1/forecast) | 900s | 900s | Non-commercial open database license. Attribution required for public use. |
+| `open-meteo-geocoding` | [Open-Meteo Geocoding API](https://geocoding-api.open-meteo.com/v1/search) | 86400s | 86400s | Non-commercial open database license. Free geocoding search for city locations. |
 | `open-meteo-aqi` | [Open-Meteo Air Quality API](https://air-quality-api.open-meteo.com/v1/air-quality) | 1800s | 1800s | Non-commercial open database license. Estimated CPCB sub-index model calculation. |
 | `indian-news-rss` | [Public News RSS Feeds](https://news.google.com/rss) | 300s | 300s | Public RSS feeds stored as headlines and links only. No article body copying. |
 | `frankfurter-currency` | [Frankfurter Currency API](https://api.frankfurter.app) | 3600s | 3600s | Open data published by European Central Bank. Free reference rates. |
@@ -25,6 +26,13 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Cache TTL**: 900 seconds
 - **Attribution Text**: "Weather data by Open-Meteo.com (CC BY 4.0)"
 - **Terms & Notes**: Non-commercial open database license. Attribution required for public use.
+
+### Open-Meteo Geocoding API (`open-meteo-geocoding`)
+- **URL**: [https://geocoding-api.open-meteo.com/v1/search](https://geocoding-api.open-meteo.com/v1/search)
+- **Refresh Interval**: Every 86400 seconds
+- **Cache TTL**: 86400 seconds
+- **Attribution Text**: "Geocoding data by Open-Meteo.com (CC BY 4.0)"
+- **Terms & Notes**: Non-commercial open database license. Free geocoding search for city locations.
 
 ### Open-Meteo Air Quality API (`open-meteo-aqi`)
 - **URL**: [https://air-quality-api.open-meteo.com/v1/air-quality](https://air-quality-api.open-meteo.com/v1/air-quality)
@@ -55,4 +63,4 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Terms & Notes**: Simulated local retail fuel, gold/silver, and delayed index values for demonstration.
 
 ---
-*Last updated: 2026-10-05T06:38:36.616Z*
+*Last updated: 2026-10-05T07:24:40.082Z*

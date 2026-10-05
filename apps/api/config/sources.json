@@ -10,6 +10,15 @@
       "attribution": "Weather data by Open-Meteo.com (CC BY 4.0)"
     },
     {
+      "id": "open-meteo-geocoding",
+      "name": "Open-Meteo Geocoding API",
+      "url": "https://geocoding-api.open-meteo.com/v1/search",
+      "ttlSeconds": 86400,
+      "refreshIntervalSeconds": 86400,
+      "terms": "Non-commercial open database license. Free geocoding search for city locations.",
+      "attribution": "Geocoding data by Open-Meteo.com (CC BY 4.0)"
+    },
+    {
       "id": "open-meteo-aqi",
       "name": "Open-Meteo Air Quality API",
       "url": "https://air-quality-api.open-meteo.com/v1/air-quality",
