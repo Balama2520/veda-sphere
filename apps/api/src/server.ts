@@ -10,6 +10,9 @@ import { registerHealthRoutes } from './routes/health.js';
 import { registerCityRoutes } from './routes/cities.js';
 import { registerWeatherRoutes } from './routes/weather.js';
 import { registerBriefRoutes } from './routes/brief.js';
+import { newsRoutes } from './routes/news.js';
+import { currencyRoutes } from './routes/currency.js';
+import { pricesRoutes } from './routes/prices.js';
 
 export interface ServerOptions {
   cache?: Cache;
@@ -84,6 +87,9 @@ export async function buildServer(options: ServerOptions = {}): Promise<{ app: F
   registerCityRoutes(app, cache);
   registerWeatherRoutes(app, cache);
   registerBriefRoutes(app, cache);
+  await app.register(newsRoutes);
+  await app.register(currencyRoutes);
+  await app.register(pricesRoutes);
 
   return { app, cache };
 }
