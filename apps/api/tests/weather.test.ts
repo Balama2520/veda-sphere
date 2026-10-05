@@ -127,7 +127,7 @@ describe('Phase 2 - Weather & Geocoding API Tests', () => {
     expect(body.data.rainChancePercent).toBe(10);
     expect(body.data.todayMaxC).toBe(35);
     expect(body.data.conditionLabel).toBe('Clear sky');
-    expect(body.data.advice).toBe('Pleasant weather today. Enjoy your day.');
+    expect(body.data.advice).toBe('Warm today. Stay hydrated.'); // todayMaxC=35 is in 32-37 warm band
     expect(body.source.id).toBe('open-meteo-weather');
 
     // Test Cache Hit - Second call should hit cache and NOT make another fetch

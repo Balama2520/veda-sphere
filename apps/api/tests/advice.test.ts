@@ -3,57 +3,93 @@ import { getWeatherAdvice, getAqiAdvice } from '../src/services/advice.js';
 
 describe('Weather & AQI Advice Service', () => {
   describe('getWeatherAdvice', () => {
-    it('returns umbrella advice with warning severity when rainChancePercent >= 50', () => {
+    it('rain >= 50% → caution severity and umbrella text', () => {
       const advice = getWeatherAdvice({ rainChancePercent: 65, todayMaxC: 32 });
       expect(advice.text).toBe('Rain likely today. Take an umbrella.');
-      expect(advice.severity).toBe('warning');
+      expect(advice.severity).toBe('caution');
     });
 
-    it('returns small chance of rain advice with info severity when rainChancePercent is between 20 and 49', () => {
+    it('rain 50% boundary → caution', () => {
+      const advice = getWeatherAdvice({ rainChancePercent: 50, todayMaxC: 28 });
+      expect(advice.severity).toBe('caution');
+    });
+
+    it('rain 20–49% → info and small-chance text', () => {
       const advice = getWeatherAdvice({ rainChancePercent: 30, todayMaxC: 30 });
-      expect(advice.text).toBe('Small chance of rain.');
+      expect(advice.text).toBe('Small chance of rain. You may want an umbrella.');
       expect(advice.severity).toBe('info');
     });
 
-    it('returns heat advice with warning severity when todayMaxC >= 38', () => {
+    it('rain 19% (just below caution) does not trigger rain advice', () => {
+      const advice = getWeatherAdvice({ rainChancePercent: 19, todayMaxC: 28 });
+      expect(advice.text).not.toContain('rain');
+    });
+
+    it('todayMax >= 38°C, low rain → warning and very-hot text', () => {
       const advice = getWeatherAdvice({ rainChancePercent: 10, todayMaxC: 40 });
-      expect(advice.text).toBe('Very hot. Drink water and avoid midday sun.');
+      expect(advice.text).toBe('Very hot today. Drink water and avoid midday sun.');
       expect(advice.severity).toBe('warning');
     });
 
-    it('returns pleasant weather advice with info severity otherwise', () => {
+    it('todayMax 38°C boundary → warning', () => {
+      const advice = getWeatherAdvice({ rainChancePercent: 0, todayMaxC: 38 });
+      expect(advice.severity).toBe('warning');
+    });
+
+    it('todayMax 32–37°C → caution and warm text', () => {
+      const advice = getWeatherAdvice({ rainChancePercent: 5, todayMaxC: 35 });
+      expect(advice.text).toBe('Warm today. Stay hydrated.');
+      expect(advice.severity).toBe('caution');
+    });
+
+    it('todayMax 32°C boundary → warm band', () => {
+      const advice = getWeatherAdvice({ rainChancePercent: 0, todayMaxC: 32 });
+      expect(advice.text).toBe('Warm today. Stay hydrated.');
+    });
+
+    it('todayMax 31°C → comfortable/neutral text, info severity', () => {
       const advice = getWeatherAdvice({ rainChancePercent: 10, todayMaxC: 28 });
-      expect(advice.text).toBe('Pleasant weather today. Enjoy your day.');
+      expect(advice.text).toBe('Comfortable weather today. Good time to be outside.');
       expect(advice.severity).toBe('info');
+      expect(advice.text).not.toContain('pleasant'); // must not say pleasant
+    });
+
+    it('rain takes priority over heat (rain 50% + todayMax 39°C → caution, rain text)', () => {
+      const advice = getWeatherAdvice({ rainChancePercent: 55, todayMaxC: 39 });
+      expect(advice.text).toContain('umbrella');
+      expect(advice.severity).toBe('caution');
     });
   });
 
   describe('getAqiAdvice', () => {
-    it('returns correct text and info severity for Good and Satisfactory categories', () => {
-      const good = getAqiAdvice('Good');
-      expect(good.text).toBe('Air is clean. A good day to be outside.');
-      expect(good.severity).toBe('info');
-
-      const satisfactory = getAqiAdvice('Satisfactory');
-      expect(satisfactory.text).toBe('Air is acceptable. Very sensitive people may notice mild effects.');
-      expect(satisfactory.severity).toBe('info');
+    it('Good → info', () => {
+      const a = getAqiAdvice('Good');
+      expect(a.text).toBe('Air is clean. A good day to be outside.');
+      expect(a.severity).toBe('info');
     });
 
-    it('returns caution severity for Moderate category', () => {
-      const moderate = getAqiAdvice('Moderate');
-      expect(moderate.text).toContain('limit long outdoor activity');
-      expect(moderate.severity).toBe('caution');
+    it('Satisfactory → info', () => {
+      const a = getAqiAdvice('Satisfactory');
+      expect(a.text).toContain('acceptable');
+      expect(a.severity).toBe('info');
     });
 
-    it('returns warning severity for Poor, Very Poor, and Severe categories', () => {
-      const poor = getAqiAdvice('Poor');
-      expect(poor.severity).toBe('warning');
+    it('Moderate → caution', () => {
+      const a = getAqiAdvice('Moderate');
+      expect(a.text).toContain('limit long outdoor activity');
+      expect(a.severity).toBe('caution');
+    });
 
-      const veryPoor = getAqiAdvice('Very Poor');
-      expect(veryPoor.severity).toBe('warning');
+    it('Poor → warning', () => {
+      expect(getAqiAdvice('Poor').severity).toBe('warning');
+    });
 
-      const severe = getAqiAdvice('Severe');
-      expect(severe.severity).toBe('warning');
+    it('Very Poor → warning', () => {
+      expect(getAqiAdvice('Very Poor').severity).toBe('warning');
+    });
+
+    it('Severe → warning', () => {
+      expect(getAqiAdvice('Severe').severity).toBe('warning');
     });
   });
 });

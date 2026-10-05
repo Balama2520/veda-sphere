@@ -18,26 +18,34 @@ export function getWeatherAdvice(input: WeatherAdviceInput): { text: string; sev
   if (rainChancePercent >= 50) {
     return {
       text: 'Rain likely today. Take an umbrella.',
-      severity: 'warning',
+      severity: 'caution', // factual reminder, not a danger warning
     };
   }
 
   if (rainChancePercent >= 20) {
     return {
-      text: 'Small chance of rain.',
+      text: 'Small chance of rain. You may want an umbrella.',
       severity: 'info',
     };
   }
 
   if (todayMaxC >= 38) {
     return {
-      text: 'Very hot. Drink water and avoid midday sun.',
+      text: 'Very hot today. Drink water and avoid midday sun.',
       severity: 'warning',
     };
   }
 
+  if (todayMaxC >= 32) {
+    return {
+      text: 'Warm today. Stay hydrated.',
+      severity: 'caution',
+    };
+  }
+
+  // Only say "pleasant" if it is genuinely not hot
   return {
-    text: 'Pleasant weather today. Enjoy your day.',
+    text: 'Comfortable weather today. Good time to be outside.',
     severity: 'info',
   };
 }
