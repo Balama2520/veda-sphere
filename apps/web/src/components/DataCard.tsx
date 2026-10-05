@@ -129,11 +129,7 @@ export function DataCard({ title, data, isLoading, isError, errorMessage }: Data
         </div>
       </div>
 
-      {/* Advice Line */}
-      <div className="bg-surface-2 rounded-btn p-3.5 border border-border mb-4 flex items-start gap-2.5">
-        <span className="text-accent-saffron text-base font-bold leading-none">💡</span>
-        <p className="text-sm font-medium text-ink leading-snug">{weather.advice}</p>
-      </div>
+
 
       {/* Footer Attribution & Timestamp */}
       <div className="flex items-center justify-between text-xs text-muted pt-3 border-t border-border">

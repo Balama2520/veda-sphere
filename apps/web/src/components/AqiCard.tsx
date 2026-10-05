@@ -116,11 +116,6 @@ export function AqiCard({ data, isLoading, isError, errorMessage }: AqiCardProps
         <span>{aqi.basis === '24h-average' ? '24-hour average' : 'Latest hour'}</span>
       </div>
 
-      {/* Advice line */}
-      <div className="bg-surface-2 rounded-btn p-3.5 border border-border mb-4 flex items-start gap-2.5">
-        <span className="text-accent-saffron font-bold">💡</span>
-        <p className="text-sm font-medium text-ink leading-snug">{aqi.advice}</p>
-      </div>
 
       {/* Footer */}
       <div className="border-t border-border pt-3 space-y-1">
