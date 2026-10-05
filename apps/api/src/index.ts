@@ -1,0 +1,18 @@
+import { buildServer } from './server.js';
+
+async function main() {
+  const port = parseInt(process.env.PORT || '4000', 10);
+  const host = process.env.HOST || '0.0.0.0';
+
+  const { app } = await buildServer({ logger: true });
+
+  try {
+    await app.listen({ port, host });
+    app.log.info(`VedaSphere API server listening at http://${host}:${port}`);
+  } catch (err) {
+    app.log.error(err);
+    process.exit(1);
+  }
+}
+
+main();
