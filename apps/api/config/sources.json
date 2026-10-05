@@ -25,7 +25,7 @@
       "ttlSeconds": 1800,
       "refreshIntervalSeconds": 1800,
       "terms": "Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.",
-      "attribution": "Air quality model data by Open-Meteo.com (CC BY 4.0). AQI estimated using CPCB National AQI sub-index formula. Not a station reading."
+      "attribution": "Air quality forecast data by Open-Meteo.com (CC BY 4.0) using Copernicus Atmosphere Monitoring Service (CAMS) model by ECMWF. Sub-index AQI calculated via Indian CPCB formula."
     },
     {
       "id": "indian-news-rss",

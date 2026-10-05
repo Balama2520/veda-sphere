@@ -38,7 +38,7 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **URL**: [https://air-quality-api.open-meteo.com/v1/air-quality](https://air-quality-api.open-meteo.com/v1/air-quality)
 - **Refresh Interval**: Every 1800 seconds
 - **Cache TTL**: 1800 seconds
-- **Attribution Text**: "Air quality model data by Open-Meteo.com (CC BY 4.0). AQI estimated using CPCB National AQI sub-index formula. Not a station reading."
+- **Attribution Text**: "Air quality forecast data by Open-Meteo.com (CC BY 4.0) using Copernicus Atmosphere Monitoring Service (CAMS) model by ECMWF. Sub-index AQI calculated via Indian CPCB formula."
 - **Terms & Notes**: Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.
 
 ### Public News RSS Feeds (`indian-news-rss`)
@@ -63,4 +63,4 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Terms & Notes**: Simulated local retail fuel, gold/silver, and delayed index values for demonstration.
 
 ---
-*Last updated: 2026-10-05T07:58:14.853Z*
+*Last updated: 2026-10-05T13:52:15.281Z*

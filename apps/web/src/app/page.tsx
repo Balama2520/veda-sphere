@@ -8,6 +8,7 @@ import { CityPicker } from '../components/CityPicker';
 import { DataCard } from '../components/DataCard';
 import { AqiCard } from '../components/AqiCard';
 import { BriefCard } from '../components/BriefCard';
+import { Footer } from '../components/Footer';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
@@ -77,6 +78,8 @@ export default function HomePage() {
           errorMessage={errorMsg}
         />
       </div>
+
+      <Footer />
     </main>
   );
 }
