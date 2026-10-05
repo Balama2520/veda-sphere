@@ -225,7 +225,7 @@ export function registerBriefRoutes(app: FastifyInstance, cache: Cache): void {
           };
 
     const lines = buildBriefLines(weather, aqi);
-    const overallStatus = worstStatus(weather.status, aqi.status, news.status, prices.status);
+    const overallStatus = worstStatus(weather.status, aqi.status);
 
     return reply.send({
       city: weather.data.city || city,

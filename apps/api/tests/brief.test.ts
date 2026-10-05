@@ -52,10 +52,30 @@ describe('Phase 3 – AQI Source & Brief Route Tests', () => {
     expect(body.city).toBe('Hyderabad');
     expect(body.weather.status).toBe('fresh');
     expect(body.aqi.status).toBe('fresh');
+    expect(body.overallStatus).toBe('fresh');
     expect(body.news).toBeDefined();
     expect(body.prices).toBeDefined();
     expect(body.aqi.data.kind).toBe('model-estimate');
     expect(body.aqi.data.userNote).toContain('not a station reading');
+  });
+
+  it('overallStatus reflects only weather and AQI (fresh) even when prices are demo', async () => {
+    global.fetch = vi.fn().mockImplementation(async (url: string) => {
+      if (url.includes('geocoding-api')) return geoResponse();
+      if (url.includes('api.open-meteo.com/v1/forecast')) return weatherResponse();
+      if (url.includes('air-quality-api')) return aqiResponse();
+      throw new Error(`Unhandled: ${url}`);
+    }) as unknown as typeof fetch;
+
+    const { app } = await buildServer({ logger: false });
+    const res = await app.inject({ method: 'GET', url: '/v1/brief?city=Hyderabad' });
+
+    expect(res.statusCode).toBe(200);
+    const body = JSON.parse(res.body);
+    expect(body.weather.status).toBe('fresh');
+    expect(body.aqi.status).toBe('fresh');
+    expect(body.prices.status).toBe('demo');
+    expect(body.overallStatus).toBe('fresh');
   });
 
   it('GET /v1/brief still returns weather when AQI is down', async () => {
