@@ -192,4 +192,39 @@ describe('Phase 3 – AQI Source & Brief Route Tests', () => {
     responses.forEach((r) => expect(r.statusCode).toBe(200));
     expect(aqiFetchCount).toBe(1);
   });
+
+  it('two /v1/brief requests within TTL return identical weather.updatedAt and aqi.updatedAt', async () => {
+    let fetchCount = 0;
+    global.fetch = vi.fn().mockImplementation(async (url: string) => {
+      fetchCount++;
+      if (url.includes('geocoding-api')) return geoResponse('Kolkata', 'West Bengal');
+      if (url.includes('api.open-meteo.com/v1/forecast')) return weatherResponse();
+      if (url.includes('air-quality-api')) return aqiResponse();
+      throw new Error(`Unhandled: ${url}`);
+    }) as unknown as typeof fetch;
+
+    const cache = new InMemoryCache();
+    const { app } = await buildServer({ cache, logger: false });
+
+    const r1 = await app.inject({ method: 'GET', url: '/v1/brief?city=Kolkata' });
+    const body1 = JSON.parse(r1.body);
+    expect(r1.statusCode).toBe(200);
+    expect(body1.weather.status).toBe('fresh');
+    expect(body1.aqi.status).toBe('fresh');
+
+    const fetchCountAfterFirst = fetchCount;
+
+    // Second request within TTL — must hit cache, not upstream
+    const r2 = await app.inject({ method: 'GET', url: '/v1/brief?city=Kolkata' });
+    const body2 = JSON.parse(r2.body);
+    expect(r2.statusCode).toBe(200);
+
+    // updatedAt must be identical (same cached object returned)
+    expect(body2.weather.updatedAt).toBe(body1.weather.updatedAt);
+    expect(body2.aqi.updatedAt).toBe(body1.aqi.updatedAt);
+
+    // No additional upstream fetch calls
+    expect(fetchCount).toBe(fetchCountAfterFirst);
+  });
 });
+
