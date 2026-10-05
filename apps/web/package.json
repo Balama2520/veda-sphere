@@ -1,0 +1,13 @@
+{
+  "name": "@vedasphere/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"Web app dev server will be configured in Phase 5\"",
+    "build": "echo \"Web app build will be configured in Phase 5\"",
+    "test": "echo \"Web app tests will be added in Phase 5\""
+  },
+  "dependencies": {
+    "@vedasphere/shared": "*"
+  }
+}
