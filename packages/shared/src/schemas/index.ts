@@ -47,6 +47,56 @@ export const WeatherQuerySchema = z.object({
     .default('Hyderabad'),
 });
 
+export const AqiCategorySchema = z.enum([
+  'Good',
+  'Satisfactory',
+  'Moderate',
+  'Poor',
+  'Very Poor',
+  'Severe',
+]);
+
+export const AqiDataSchema = z.object({
+  city: z.string(),
+  aqi: z.number(),
+  category: AqiCategorySchema,
+  dominantPollutant: z.enum(['PM2.5', 'PM10', 'None']),
+  subIndices: z.object({
+    pm25: z.number().nullable(),
+    pm10: z.number().nullable(),
+  }),
+  basis: z.enum(['24h-average', 'latest-hour']),
+  advice: z.string(),
+  kind: z.literal('model-estimate'),
+  userNote: z.string(),
+});
+
+export const AdviceSeveritySchema = z.enum(['info', 'caution', 'warning']);
+
+export const BriefLineSchema = z.object({
+  id: z.string(),
+  icon: z.string(),
+  text: z.string(),
+  severity: AdviceSeveritySchema,
+  sourceId: z.string(),
+  status: DataStatusSchema,
+  updatedAt: z.string(),
+});
+
+export const BriefQuerySchema = z.object({
+  city: z.string().min(2).max(60).default('Hyderabad'),
+  lang: z.enum(['en']).default('en'),
+});
+
+export const BriefResponseSchema = z.object({
+  city: z.string(),
+  generatedAt: z.string(),
+  lines: z.array(BriefLineSchema),
+  weather: NormalizedResultSchema(WeatherDataSchema),
+  aqi: NormalizedResultSchema(AqiDataSchema),
+  overallStatus: DataStatusSchema,
+});
+
 export const ApiErrorResponseSchema = z.object({
   error: z.object({
     code: z.string(),

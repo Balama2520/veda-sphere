@@ -13,7 +13,7 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 | --- | --- | --- | --- | --- |
 | `open-meteo-weather` | [Open-Meteo Weather API](https://api.open-meteo.com/v1/forecast) | 900s | 900s | Non-commercial open database license. Attribution required for public use. |
 | `open-meteo-geocoding` | [Open-Meteo Geocoding API](https://geocoding-api.open-meteo.com/v1/search) | 86400s | 86400s | Non-commercial open database license. Free geocoding search for city locations. |
-| `open-meteo-aqi` | [Open-Meteo Air Quality API](https://air-quality-api.open-meteo.com/v1/air-quality) | 1800s | 1800s | Non-commercial open database license. Estimated CPCB sub-index model calculation. |
+| `open-meteo-aqi` | [Open-Meteo Air Quality API (CAMS model)](https://air-quality-api.open-meteo.com/v1/air-quality) | 1800s | 1800s | Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var. |
 | `indian-news-rss` | [Public News RSS Feeds](https://news.google.com/rss) | 300s | 300s | Public RSS feeds stored as headlines and links only. No article body copying. |
 | `frankfurter-currency` | [Frankfurter Currency API](https://api.frankfurter.app) | 3600s | 3600s | Open data published by European Central Bank. Free reference rates. |
 | `demo-prices-provider` | [VedaSphere Demo Price Provider](https://vedasphere.local/demo/prices) | 3600s | 3600s | Simulated local retail fuel, gold/silver, and delayed index values for demonstration. |
@@ -34,12 +34,12 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Attribution Text**: "Geocoding data by Open-Meteo.com (CC BY 4.0)"
 - **Terms & Notes**: Non-commercial open database license. Free geocoding search for city locations.
 
-### Open-Meteo Air Quality API (`open-meteo-aqi`)
+### Open-Meteo Air Quality API (CAMS model) (`open-meteo-aqi`)
 - **URL**: [https://air-quality-api.open-meteo.com/v1/air-quality](https://air-quality-api.open-meteo.com/v1/air-quality)
 - **Refresh Interval**: Every 1800 seconds
 - **Cache TTL**: 1800 seconds
-- **Attribution Text**: "Air Quality data by Open-Meteo.com (CC BY 4.0) with CPCB sub-index calculation"
-- **Terms & Notes**: Non-commercial open database license. Estimated CPCB sub-index model calculation.
+- **Attribution Text**: "Air quality model data by Open-Meteo.com (CC BY 4.0). AQI estimated using CPCB National AQI sub-index formula. Not a station reading."
+- **Terms & Notes**: Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.
 
 ### Public News RSS Feeds (`indian-news-rss`)
 - **URL**: [https://news.google.com/rss](https://news.google.com/rss)
@@ -63,4 +63,4 @@ This document is auto-generated from `apps/api/config/sources.json`. All data so
 - **Terms & Notes**: Simulated local retail fuel, gold/silver, and delayed index values for demonstration.
 
 ---
-*Last updated: 2026-10-05T07:24:40.082Z*
+*Last updated: 2026-10-05T07:58:14.853Z*

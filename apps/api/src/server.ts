@@ -9,6 +9,7 @@ import { globalSourceRegistry } from './sources/types.js';
 import { registerHealthRoutes } from './routes/health.js';
 import { registerCityRoutes } from './routes/cities.js';
 import { registerWeatherRoutes } from './routes/weather.js';
+import { registerBriefRoutes } from './routes/brief.js';
 
 export interface ServerOptions {
   cache?: Cache;
@@ -82,6 +83,7 @@ export async function buildServer(options: ServerOptions = {}): Promise<{ app: F
   registerHealthRoutes(app, cache);
   registerCityRoutes(app, cache);
   registerWeatherRoutes(app, cache);
+  registerBriefRoutes(app, cache);
 
   return { app, cache };
 }

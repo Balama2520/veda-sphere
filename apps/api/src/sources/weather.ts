@@ -58,7 +58,7 @@ export function getDemoWeatherData(cityName: string): NormalizedResult<WeatherDa
       rainChancePercent: rainChance,
       todayMaxC: todayMax,
       conditionLabel: 'Partly cloudy',
-      advice: getWeatherAdvice({ rainChancePercent: rainChance, todayMaxC: todayMax }),
+      advice: getWeatherAdvice({ rainChancePercent: rainChance, todayMaxC: todayMax }).text,
     },
     source: {
       id: 'open-meteo-weather',
@@ -148,7 +148,7 @@ export async function getWeatherForCity(
             rainChancePercent: rainChance,
             todayMaxC,
             conditionLabel: mapWmoCodeToCondition(weatherCode),
-            advice: getWeatherAdvice({ rainChancePercent: rainChance, todayMaxC }),
+            advice: getWeatherAdvice({ rainChancePercent: rainChance, todayMaxC }).text,
           };
 
           const freshResult: NormalizedResult<WeatherData> = {

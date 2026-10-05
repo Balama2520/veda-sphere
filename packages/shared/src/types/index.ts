@@ -32,6 +32,54 @@ export interface WeatherData {
   advice: string;
 }
 
+export type AqiCategory =
+  | 'Good'
+  | 'Satisfactory'
+  | 'Moderate'
+  | 'Poor'
+  | 'Very Poor'
+  | 'Severe';
+
+export type DominantPollutant = 'PM2.5' | 'PM10' | 'None';
+
+export type AqiBasis = '24h-average' | 'latest-hour';
+
+export interface AqiData {
+  city: string;
+  aqi: number;
+  category: AqiCategory;
+  dominantPollutant: DominantPollutant;
+  subIndices: {
+    pm25: number | null;
+    pm10: number | null;
+  };
+  basis: AqiBasis;
+  advice: string;
+  kind: 'model-estimate';
+  userNote: string;
+}
+
+export type AdviceSeverity = 'info' | 'caution' | 'warning';
+
+export interface BriefLine {
+  id: string;
+  icon: string; // e.g. "umbrella", "sun", "wind"
+  text: string;
+  severity: AdviceSeverity;
+  sourceId: string;
+  status: DataStatus;
+  updatedAt: string;
+}
+
+export interface BriefResponse {
+  city: string;
+  generatedAt: string;
+  lines: BriefLine[];
+  weather: NormalizedResult<WeatherData>;
+  aqi: NormalizedResult<AqiData>;
+  overallStatus: DataStatus;
+}
+
 export interface CacheStats {
   size: number;
   maxSize: number;

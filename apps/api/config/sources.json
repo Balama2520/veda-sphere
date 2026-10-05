@@ -20,12 +20,12 @@
     },
     {
       "id": "open-meteo-aqi",
-      "name": "Open-Meteo Air Quality API",
+      "name": "Open-Meteo Air Quality API (CAMS model)",
       "url": "https://air-quality-api.open-meteo.com/v1/air-quality",
       "ttlSeconds": 1800,
       "refreshIntervalSeconds": 1800,
-      "terms": "Non-commercial open database license. Estimated CPCB sub-index model calculation.",
-      "attribution": "Air Quality data by Open-Meteo.com (CC BY 4.0) with CPCB sub-index calculation"
+      "terms": "Non-commercial open database license (CC BY 4.0). Model-based CAMS-derived data – NOT ground station readings. Attribution required for public use. AQI calculated using Indian CPCB National AQI sub-index method applied to PM2.5 and PM10 (µg/m³, hourly). Configurable TTL via AQI_TTL_SECONDS env var.",
+      "attribution": "Air quality model data by Open-Meteo.com (CC BY 4.0). AQI estimated using CPCB National AQI sub-index formula. Not a station reading."
     },
     {
       "id": "indian-news-rss",
