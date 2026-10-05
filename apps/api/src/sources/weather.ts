@@ -7,6 +7,7 @@ import { globalSourceRegistry } from './types.js';
 const ALLOWED_HOST = 'api.open-meteo.com';
 const TIMEOUT_MS = 5000;
 const MAX_BYTES = 1024 * 1024;
+const FRESH_TTL_SECONDS = parseInt(process.env.WEATHER_TTL_SECONDS || '900', 10);
 
 // In-flight request coalescing map
 const inflightRequests = new Map<string, Promise<NormalizedResult<WeatherData>>>();
@@ -163,8 +164,8 @@ export async function getWeatherForCity(
             status: 'fresh',
           };
 
-          // Cache fresh (15 mins) and snapshot for stale (24 hrs)
-          await cache.set(cacheKeyFresh, freshResult, 900);
+          // Cache fresh (configurable, default 15 min) and snapshot for stale (24 hrs)
+          await cache.set(cacheKeyFresh, freshResult, FRESH_TTL_SECONDS);
           await cache.set(cacheKeyStale, freshResult, 86400);
 
           return freshResult;
