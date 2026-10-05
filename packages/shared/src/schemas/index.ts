@@ -71,6 +71,69 @@ export const AqiDataSchema = z.object({
   userNote: z.string(),
 });
 
+export const NewsItemSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  link: z.string(),
+  source: z.string(),
+  publishedAt: z.string(),
+});
+
+export const NewsDataSchema = z.object({
+  items: z.array(NewsItemSchema),
+  unavailableSources: z.array(z.string()).optional(),
+});
+
+export const CurrencyRatesSchema = z.object({
+  usdInr: z.number(),
+  eurInr: z.number(),
+  gbpInr: z.number(),
+  rateDate: z.string(),
+  note: z.string(),
+});
+
+export const FuelPriceItemSchema = z.object({
+  petrolPerLitre: z.number(),
+  dieselPerLitre: z.number(),
+  unit: z.string(),
+  status: DataStatusSchema,
+  isSample: z.boolean(),
+  note: z.string(),
+});
+
+export const PreciousMetalsItemSchema = z.object({
+  gold24kPer10g: z.number(),
+  silverPerKg: z.number(),
+  unit: z.string(),
+  status: DataStatusSchema,
+  isSample: z.boolean(),
+  note: z.string(),
+});
+
+export const MarketIndexItemSchema = z.object({
+  nifty50: z.number(),
+  sensex: z.number(),
+  status: DataStatusSchema,
+  isSample: z.boolean(),
+  isDelayed: z.boolean(),
+  note: z.string(),
+});
+
+export const PricesDataSchema = z.object({
+  city: z.string(),
+  currency: z.object({
+    usdInr: z.number(),
+    eurInr: z.number(),
+    gbpInr: z.number(),
+    rateDate: z.string(),
+    note: z.string(),
+    status: DataStatusSchema,
+  }),
+  fuel: FuelPriceItemSchema,
+  preciousMetals: PreciousMetalsItemSchema,
+  marketIndex: MarketIndexItemSchema,
+});
+
 export const AdviceSeveritySchema = z.enum(['info', 'caution', 'warning']);
 
 export const BriefLineSchema = z.object({
@@ -94,6 +157,8 @@ export const BriefResponseSchema = z.object({
   lines: z.array(BriefLineSchema),
   weather: NormalizedResultSchema(WeatherDataSchema),
   aqi: NormalizedResultSchema(AqiDataSchema),
+  news: NormalizedResultSchema(NewsDataSchema),
+  prices: NormalizedResultSchema(PricesDataSchema),
   overallStatus: DataStatusSchema,
 });
 

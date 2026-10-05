@@ -59,6 +59,69 @@ export interface AqiData {
   userNote: string;
 }
 
+export interface NewsItem {
+  id: string;
+  title: string;
+  link: string;
+  source: string;
+  publishedAt: string;
+}
+
+export interface NewsData {
+  items: NewsItem[];
+  unavailableSources?: string[];
+}
+
+export interface CurrencyRates {
+  usdInr: number;
+  eurInr: number;
+  gbpInr: number;
+  rateDate: string;
+  note: string;
+}
+
+export interface FuelPriceItem {
+  petrolPerLitre: number;
+  dieselPerLitre: number;
+  unit: string;
+  status: DataStatus;
+  isSample: boolean;
+  note: string;
+}
+
+export interface PreciousMetalsItem {
+  gold24kPer10g: number;
+  silverPerKg: number;
+  unit: string;
+  status: DataStatus;
+  isSample: boolean;
+  note: string;
+}
+
+export interface MarketIndexItem {
+  nifty50: number;
+  sensex: number;
+  status: DataStatus;
+  isSample: boolean;
+  isDelayed: boolean;
+  note: string;
+}
+
+export interface PricesData {
+  city: string;
+  currency: {
+    usdInr: number;
+    eurInr: number;
+    gbpInr: number;
+    rateDate: string;
+    note: string;
+    status: DataStatus;
+  };
+  fuel: FuelPriceItem;
+  preciousMetals: PreciousMetalsItem;
+  marketIndex: MarketIndexItem;
+}
+
 export type AdviceSeverity = 'info' | 'caution' | 'warning';
 
 export interface BriefLine {
@@ -77,6 +140,8 @@ export interface BriefResponse {
   lines: BriefLine[];
   weather: NormalizedResult<WeatherData>;
   aqi: NormalizedResult<AqiData>;
+  news: NormalizedResult<NewsData>;
+  prices: NormalizedResult<PricesData>;
   overallStatus: DataStatus;
 }
 
