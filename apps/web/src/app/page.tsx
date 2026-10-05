@@ -8,6 +8,8 @@ import { CityPicker } from '../components/CityPicker';
 import { DataCard } from '../components/DataCard';
 import { AqiCard } from '../components/AqiCard';
 import { BriefCard } from '../components/BriefCard';
+import { NewsCard } from '../components/NewsCard';
+import { PricesCard } from '../components/PricesCard';
 import { Footer } from '../components/Footer';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
@@ -73,6 +75,26 @@ export default function HomePage() {
       <div className="mb-4">
         <AqiCard
           data={briefResult?.aqi}
+          isLoading={isLoading || !isLoaded}
+          isError={isError}
+          errorMessage={errorMsg}
+        />
+      </div>
+
+      {/* News Card */}
+      <div className="mb-4">
+        <NewsCard
+          data={briefResult?.news}
+          isLoading={isLoading || !isLoaded}
+          isError={isError}
+          errorMessage={errorMsg}
+        />
+      </div>
+
+      {/* Prices Card */}
+      <div className="mb-4">
+        <PricesCard
+          data={briefResult?.prices}
           isLoading={isLoading || !isLoaded}
           isError={isError}
           errorMessage={errorMsg}
