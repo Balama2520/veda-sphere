@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import {
   parseRssXml,
   sanitizeTitle,
@@ -9,8 +9,13 @@ import {
 
 describe('News Source & Parsing Tests', () => {
   beforeEach(() => {
+    vi.useFakeTimers();
     clearNewsCache();
     vi.restoreAllMocks();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it('sanitizes HTML tags, control chars, HTML entities, and caps length at 200', () => {
@@ -96,20 +101,63 @@ describe('News Source & Parsing Tests', () => {
     expect(result.data.unavailableSources?.length).toBe(3); // 3 of 5 feeds failed
   });
 
-  it('handles partial feed failures: 2 of 5 fail, returns rest as fresh with unavailableSources listed', async () => {
+  it('handles single feed failure gracefully: 1 feed fails, 4 succeed', async () => {
     vi.spyOn(globalThis, 'fetch').mockImplementation(async (url: any) => {
       const uStr = String(url);
-      if (uStr.includes('thehindu.com') || uStr.includes('indianexpress.com') || uStr.includes('timesofindia')) {
-        return new Response(`<rss><channel><item><title>Item from ${uStr}</title><link>https://example.com/ok</link></item></channel></rss>`, { status: 200 });
+      if (uStr.includes('feedburner')) {
+        return new Response('Internal Server Error', { status: 500 });
       }
-      return new Response('Server Error', { status: 500 });
+      return new Response(
+        `<rss><channel><item><title>Item from ${uStr}</title><link>https://example.com/${uStr.length}</link></item></channel></rss>`,
+        { status: 200 }
+      );
     });
 
-    const result = await fetchNewsData(5);
+    const result = await fetchNewsData(10);
     expect(result.status).toBe('fresh');
-    expect(result.data.unavailableSources).toBeDefined();
-    expect(result.data.unavailableSources).toContain('Hindustan Times');
-    expect(result.data.unavailableSources).toContain('NDTV');
+    expect(result.data.items.length).toBe(4);
+    expect(result.data.unavailableSources).toEqual(['NDTV']);
+  });
+
+  it('cache hit: subsequent requests within TTL return cached data without refetching', async () => {
+    let callCount = 0;
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async () => {
+      callCount++;
+      return new Response(
+        `<rss><channel><item><title>Cached Item ${callCount}</title><link>https://example.com/cached</link></item></channel></rss>`,
+        { status: 200 }
+      );
+    });
+
+    const res1 = await fetchNewsData(5);
+    expect(res1.status).toBe('fresh');
+    const callsAfterFirst = callCount;
+
+    // Second call within TTL
+    const res2 = await fetchNewsData(5);
+    expect(res2.status).toBe('fresh');
+    expect(callCount).toBe(callsAfterFirst);
+    expect(res2.updatedAt).toBe(res1.updatedAt);
+  });
+
+  it('request coalescing: simultaneous requests share single in-flight fetch promise', async () => {
+    let callCount = 0;
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async () => {
+      callCount++;
+      return new Response(
+        `<rss><channel><item><title>Coalesced Item</title><link>https://example.com/coalesce</link></item></channel></rss>`,
+        { status: 200 }
+      );
+    });
+
+    const p1 = fetchNewsData(5);
+    const p2 = fetchNewsData(5);
+    const [res1, res2] = await Promise.all([p1, p2]);
+
+    expect(res1.status).toBe('fresh');
+    expect(res2.status).toBe('fresh');
+    expect(res1.updatedAt).toBe(res2.updatedAt);
+    expect(callCount).toBe(5); // Exactly 1 fetch per feed
   });
 
   it('falls back to demo sample headlines when all feeds fail', async () => {

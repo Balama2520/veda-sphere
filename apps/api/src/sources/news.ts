@@ -114,7 +114,7 @@ async function fetchWithRetryAndCap(url: string, retries = 2): Promise<string> {
         signal: controller.signal,
         redirect: 'manual', // Prevent automatic redirects to un-allowlisted hosts
         headers: {
-          'User-Agent': 'VedaSphere/1.0 (Indian City Brief App; contact@vedasphere.local)',
+          'User-Agent': 'VedaSphere/0.1 (+https://github.com/Balama2520/veda-sphere)',
           Accept: 'application/rss+xml, application/xml, text/xml',
         },
       });
@@ -131,7 +131,7 @@ async function fetchWithRetryAndCap(url: string, retries = 2): Promise<string> {
           // Follow redirect once if allowlisted
           const subRes = await fetch(redirectUrl.toString(), {
             headers: {
-              'User-Agent': 'VedaSphere/1.0 (Indian City Brief App; contact@vedasphere.local)',
+              'User-Agent': 'VedaSphere/0.1 (+https://github.com/Balama2520/veda-sphere)',
             },
           });
           const text = await subRes.text();

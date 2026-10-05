@@ -25,7 +25,7 @@ async function fetchFrankfurterRate(baseCurrency: string): Promise<{ rate: numbe
     const response = await fetch(`${FRANKFURTER_BASE_URL}?base=${baseCurrency}&symbols=INR`, {
       signal: controller.signal,
       headers: {
-        'User-Agent': 'VedaSphere/1.0 (Indian City Brief App; contact@vedasphere.local)',
+        'User-Agent': 'VedaSphere/0.1 (+https://github.com/Balama2520/veda-sphere)',
       },
     });
 
