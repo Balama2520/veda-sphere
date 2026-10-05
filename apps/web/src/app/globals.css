@@ -2,22 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design Tokens ──────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --bg: #FAF8F5;
+  --surface: #FFFFFF;
+  --surface-2: #F4EFE6;
+  --border: #E7E1D6;
+
+  /* Text */
+  --ink: #14142B;
+  --muted: #5B5B73;
+
+  /* Brand */
+  --brand: #4338CA;
+  --accent-saffron: #D97706;
+
+  /* Data statuses */
+  --status-fresh: #16A34A;
+  --status-stale: #D97706;
+  --status-demo: #6B7280;
+  --status-warning: #DC2626;
+  --status-caution: #D97706;
+
+  /* AQI category colours (CPCB) */
+  --aqi-good:        #3BB273;   /* 0-50   */
+  --aqi-satisfactory:#92C36F;   /* 51-100 */
+  --aqi-moderate:    #F4D35E;   /* 101-200 */
+  --aqi-poor:        #F08030;   /* 201-300 */
+  --aqi-very-poor:   #D64045;   /* 301-400 */
+  --aqi-severe:      #8B2FC9;   /* 401-500 */
+
+  /* Nav dimensions */
+  --nav-bottom-h: 64px;
+  --nav-sidebar-w: 220px;
+}
+
+.dark {
+  --bg: #0F1020;
+  --surface: #17182B;
+  --surface-2: #22243E;
+  --border: #2A2C45;
+  --ink: #ECECF6;
+  --muted: #A0A2BC;
+  --brand: #818CF8;
+  --accent-saffron: #F59E0B;
+
+  --status-fresh: #4ADE80;
+  --status-stale: #FCD34D;
+  --status-demo: #9CA3AF;
+  --status-warning: #F87171;
+  --status-caution: #FCD34D;
+
+  --aqi-good:        #4ADE80;
+  --aqi-satisfactory:#A3E635;
+  --aqi-moderate:    #FACC15;
+  --aqi-poor:        #FB923C;
+  --aqi-very-poor:   #F87171;
+  --aqi-severe:      #C084FC;
+}
+
+/* ─── Base Layer ─────────────────────────────────────────────── */
 @layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: #FAF8F5;
-    color: #14142B;
+    background-color: var(--bg);
+    color: var(--ink);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
     -webkit-tap-highlight-color: transparent;
+    /* Reserve space for bottom nav on mobile */
+    padding-bottom: var(--nav-bottom-h);
   }
 
-  button, input, select {
+  @media (min-width: 1024px) {
+    body {
+      padding-bottom: 0;
+      padding-left: var(--nav-sidebar-w);
+    }
+  }
+
+  button,
+  input,
+  select {
     min-height: 44px;
   }
 
   :focus-visible {
-    outline: 2px solid #4338CA;
+    outline: 2px solid var(--brand);
     outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Custom scrollbar (webkit) */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 9999px;
+  }
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+@layer utilities {
+  /* Skip-to-content */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-link:focus {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    width: auto;
+    height: auto;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    z-index: 9999;
+    outline: none;
+  }
+
+  /* Shimmer skeleton */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--surface-2) 25%,
+      var(--border) 50%,
+      var(--surface-2) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 6px;
+  }
+
+  /* Nav active item */
+  .nav-active {
+    color: var(--brand);
   }
 }
