@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "id": "open-meteo-weather",
+      "name": "Open-Meteo Weather API",
+      "url": "https://api.open-meteo.com/v1/forecast",
+      "ttlSeconds": 900,
+      "refreshIntervalSeconds": 900,
+      "terms": "Non-commercial open database license. Attribution required for public use.",
+      "attribution": "Weather data by Open-Meteo.com (CC BY 4.0)"
+    },
+    {
+      "id": "open-meteo-aqi",
+      "name": "Open-Meteo Air Quality API",
+      "url": "https://air-quality-api.open-meteo.com/v1/air-quality",
+      "ttlSeconds": 1800,
+      "refreshIntervalSeconds": 1800,
+      "terms": "Non-commercial open database license. Estimated CPCB sub-index model calculation.",
+      "attribution": "Air Quality data by Open-Meteo.com (CC BY 4.0) with CPCB sub-index calculation"
+    },
+    {
+      "id": "indian-news-rss",
+      "name": "Public News RSS Feeds",
+      "url": "https://news.google.com/rss",
+      "ttlSeconds": 300,
+      "refreshIntervalSeconds": 300,
+      "terms": "Public RSS feeds stored as headlines and links only. No article body copying.",
+      "attribution": "Headlines sourced from public RSS feeds"
+    },
+    {
+      "id": "frankfurter-currency",
+      "name": "Frankfurter Currency API",
+      "url": "https://api.frankfurter.app",
+      "ttlSeconds": 3600,
+      "refreshIntervalSeconds": 3600,
+      "terms": "Open data published by European Central Bank. Free reference rates.",
+      "attribution": "Rates provided by Frankfurter / European Central Bank"
+    },
+    {
+      "id": "demo-prices-provider",
+      "name": "VedaSphere Demo Price Provider",
+      "url": "https://vedasphere.local/demo/prices",
+      "ttlSeconds": 3600,
+      "refreshIntervalSeconds": 3600,
+      "terms": "Simulated local retail fuel, gold/silver, and delayed index values for demonstration.",
+      "attribution": "Demo sample data - VedaSphere internal provider"
+    }
+  ]
+}
