@@ -92,7 +92,7 @@ export function NewsCard({ data, isLoading, isError, errorMessage }: NewsCardPro
                 rel="noopener noreferrer"
                 className="group block"
               >
-                <h4 className="text-sm font-medium text-ink group-hover:text-brand-indigo transition-colors line-clamp-2 leading-snug">
+                <h4 className="text-sm font-medium text-ink group-hover:text-brand transition-colors line-clamp-2 leading-snug">
                   {item.title}
                 </h4>
                 <div className="flex items-center justify-between text-xs text-muted mt-1.5">

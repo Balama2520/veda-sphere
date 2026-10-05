@@ -74,12 +74,12 @@ export function AqiCard({ data, isLoading, isError, errorMessage }: AqiCardProps
       <div className="bg-surface border border-border rounded-card p-6 shadow-sm">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-sm font-semibold text-muted uppercase tracking-wider flex items-center gap-2">
-            <Wind className="w-4 h-4 text-brand-indigo" /> Air Quality Index
+            <Wind className="w-4 h-4 text-brand" /> Air Quality Index
           </h3>
           <StatusBadge status="demo" />
         </div>
         <div className="py-4 text-center">
-          <Info className="w-8 h-8 text-brand-indigo mx-auto mb-2 opacity-80" />
+          <Info className="w-8 h-8 text-brand mx-auto mb-2 opacity-80" />
           <p className="text-sm font-medium text-ink">{errorMessage || 'Air quality data temporarily unavailable.'}</p>
         </div>
       </div>
@@ -95,7 +95,7 @@ export function AqiCard({ data, isLoading, isError, errorMessage }: AqiCardProps
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Wind className="w-5 h-5 text-brand-indigo" />
+          <Wind className="w-5 h-5 text-brand" />
           <h3 className="text-sm font-semibold text-muted uppercase tracking-wider">Air Quality Index</h3>
         </div>
         <StatusBadge status={data.status} />

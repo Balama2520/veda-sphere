@@ -10,7 +10,7 @@ export function Footer() {
           href="https://open-meteo.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-brand-indigo transition-colors"
+          className="underline hover:text-brand transition-colors"
         >
           Open-Meteo.com
         </a>{' '}
@@ -22,7 +22,7 @@ export function Footer() {
           href="https://atmosphere.copernicus.eu/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-brand-indigo transition-colors"
+          className="underline hover:text-brand transition-colors"
         >
           Copernicus Atmosphere Monitoring Service (CAMS)
         </a>{' '}
@@ -34,7 +34,7 @@ export function Footer() {
           href="http://www.cpcb.nic.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:text-brand-indigo transition-colors"
+          className="underline hover:text-brand transition-colors"
         >
           Central Pollution Control Board (CPCB)
         </a>{' '}
@@ -46,7 +46,7 @@ export function Footer() {
           href="https://github.com/Balama2520/veda-sphere/blob/main/DATA_SOURCES.md"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline font-medium text-brand-indigo hover:opacity-80 transition-opacity"
+          className="underline font-medium text-brand hover:opacity-80 transition-opacity"
         >
           DATA_SOURCES.md
         </a>.

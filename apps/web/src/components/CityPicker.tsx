@@ -62,7 +62,7 @@ export function CityPicker({ selectedCity, onSelectCity }: CityPickerProps) {
 
       <div className="relative">
         <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-muted">
-          <MapPin className="w-5 h-5 text-brand-indigo" />
+          <MapPin className="w-5 h-5 text-brand" />
         </div>
 
         <input
@@ -74,12 +74,12 @@ export function CityPicker({ selectedCity, onSelectCity }: CityPickerProps) {
           }}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search city in India (e.g. Hyderabad, Mumbai)"
-          className="w-full pl-11 pr-10 py-3 bg-surface border border-border rounded-btn text-ink text-base font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-indigo transition-all"
+          className="w-full pl-11 pr-10 py-3 bg-surface border border-border rounded-btn text-ink text-base font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-brand transition-all"
         />
 
         <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-muted">
           {isLoading ? (
-            <Loader2 className="w-4 h-4 animate-spin text-brand-indigo" />
+            <Loader2 className="w-4 h-4 animate-spin text-brand" />
           ) : (
             <Search className="w-4 h-4" />
           )}
@@ -111,7 +111,7 @@ export function CityPicker({ selectedCity, onSelectCity }: CityPickerProps) {
                   <span className="text-xs text-muted block">{city.state}</span>
                 </div>
                 {selectedCity.toLowerCase() === city.name.toLowerCase() && (
-                  <Check className="w-4 h-4 text-brand-indigo" />
+                  <Check className="w-4 h-4 text-brand" />
                 )}
               </button>
             ))

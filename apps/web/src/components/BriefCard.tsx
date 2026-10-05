@@ -93,7 +93,7 @@ export function BriefCard({ city, lines, overallStatus, generatedAt, isLoading }
       <div className="space-y-3">
         {lines.map((line) => (
           <div key={line.id} className="flex items-start gap-3">
-            <div className="mt-0.5 text-brand-indigo">{getLineIcon(line.icon)}</div>
+            <div className="mt-0.5 text-brand">{getLineIcon(line.icon)}</div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-ink leading-snug">{line.text}</p>
               <div className="flex items-center gap-2 mt-1">

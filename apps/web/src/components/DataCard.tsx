@@ -90,7 +90,7 @@ export function DataCard({ title, data, isLoading, isError, errorMessage }: Data
           <StatusBadge status="demo" />
         </div>
         <div className="py-4 text-center">
-          <Info className="w-8 h-8 text-brand-indigo mx-auto mb-2 opacity-80" />
+          <Info className="w-8 h-8 text-brand mx-auto mb-2 opacity-80" />
           <p className="text-sm font-medium text-ink">
             {errorMessage || "Weather data temporarily unavailable for this location."}
           </p>
@@ -108,7 +108,7 @@ export function DataCard({ title, data, isLoading, isError, errorMessage }: Data
       {/* Top Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <CloudSun className="w-5 h-5 text-brand-indigo" />
+          <CloudSun className="w-5 h-5 text-brand" />
           <h3 className="text-sm font-semibold text-muted uppercase tracking-wider">{title}</h3>
         </div>
         <StatusBadge status={data.status} />
