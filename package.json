@@ -8,6 +8,10 @@
     "apps/*"
   ],
   "scripts": {
+    "prepare": "npm run build --workspace=@vedasphere/shared",
+    "predev": "npm run build --workspace=@vedasphere/shared",
+    "pretest": "npm run build --workspace=@vedasphere/shared",
+    "prebuild": "npm run build --workspace=@vedasphere/shared",
     "dev": "concurrently -k -p \"[{name}]\" -n \"API,WEB\" -c \"cyan,magenta\" \"npm run dev --workspace=@vedasphere/api\" \"npm run dev --workspace=@vedasphere/web\"",
     "build": "npm run build --workspaces --if-present",
     "test": "vitest run",
