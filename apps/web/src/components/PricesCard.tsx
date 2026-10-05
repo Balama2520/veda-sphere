@@ -178,8 +178,7 @@ export function PricesCard({ data, isLoading, isError, errorMessage }: PricesCar
         </div>
       </div>
 
-      <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs text-muted">
-        <span>Reference rate, not a live market price</span>
+      <div className="mt-4 pt-3 border-t border-border flex items-center justify-end text-xs text-muted">
         <span>Updated {getRelativeTimeString(data.updatedAt)}</span>
       </div>
     </div>
